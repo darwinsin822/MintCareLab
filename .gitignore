@@ -1,0 +1,11 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Reportes dinámicos de auditoría locales y logs
+logs/*.log
+reports/storage_report_*.json
+
+# Cuarentena local
+quarantine/

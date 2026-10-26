@@ -1,0 +1,17 @@
+{
+  "system": "Linux Mint Cinnamon",
+  "disk_root": {
+    "total": "234G",
+    "used": "113G",
+    "available": "109G",
+    "percentage": "51%"
+  },
+  "protected_paths": [
+    "/home/darwinsin/Documentos",
+    "/home/darwinsin/Música",
+    "/home/darwinsin/Drive",
+    "/home/darwinsin/.config/onlyoffice",
+    "/usr/bin/onlyoffice-desktopeditors"
+  ],
+  "audit_date": "2026-10-10"
+}
