@@ -17,7 +17,10 @@ get_protected_paths() {
             # Ignorar comentarios y líneas vacías
             [[ "$line" =~ ^[[:space:]]*# ]] && continue
             [[ -z "${line// }" ]] && continue
-            paths+=("${line%%#*}")
+            local p="${line%%#*}"
+            p="${p/#\~/$HOME}"
+            p="${p/#\$HOME/$HOME}"
+            paths+=("$p")
         done < "$PROTECTED_CONF"
     else
         paths=(
