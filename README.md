@@ -82,3 +82,14 @@ Para validar que la protección técnica bloquee cualquier intento destructivo s
 python3 ~/MintCareLab/tests/test_security_py.py
 ```
 *(Resultado certificado: 7/7 pruebas aprobadas con éxito).*
+
+
+---
+
+## 📊 Evidencia de Ejecución en Vivo
+
+A continuación se muestra la evidencia empírica de la ejecución determinista del pipeline de verificación e integridad técnica:
+
+<div align="center">
+  <img src="./assets/mintcarelab-execution.png" alt="Execution Results" width="95%" style="border-radius: 8px; border: 1px solid #282e3e; margin: 16px 0;" />
+</div>
