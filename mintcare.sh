@@ -73,8 +73,10 @@ CLEAN-003 | Miniaturas de Cinnamon (~/.cache)   | ~2 MB       | Muy Bajo
 CLEAN-004 | Temporales de Dart/Flutter          | ~244 KB     | Muy Bajo
 CLEAN-005 | Temporales de Gradle (.tmp)         | ~20 MB      | Muy Bajo
 CLEAN-006 | Runtimes no utilizados de Flatpak   | ~1.0 GB     | Bajo
+CLEAN-007 | Limpieza Agresiva de Gradle         | ~7.0 GB     | Muy Bajo
+CLEAN-008 | Purga Carpetas Vacías en Cachés     | Estructura  | Muy Bajo
 ---------+-------------------------------------+-------------+---------
-TOTAL CONFIRMADO POTENCIAL LIBERABLE:          ~2.97 GB
+TOTAL CONFIRMADO POTENCIAL LIBERABLE:          ~10.0+ GB
 PLAN_EOF
     echo ""
     echo -e "${C_GREEN}Para ejecutar estas acciones seguras utilice: ./mintcare.sh clean-safe${C_RESET}"
@@ -82,7 +84,7 @@ PLAN_EOF
 
 mode_clean_safe() {
     show_banner
-    echo -e "${C_YELLOW}Se ejecutarán únicamente las limpiezas de cachés 100% regenerables.${C_RESET}"
+    echo -e "${C_YELLOW}Se ejecutarán limpiezas de cachés, residuos y optimizaciones seguras.${C_RESET}"
     echo -e "${C_RED}${C_BOLD}REGLA SUPREMA: Documentos y Música NUNCA serán tocados.${C_RESET}\n"
     
     read -p "¿Desea proceder con la limpieza segura verificada? [s/N]: " confirm
@@ -99,6 +101,8 @@ mode_clean_safe() {
     clean_dart_temp false
     clean_gradle_temporary false
     clean_flatpak_unused false
+    clean_gradle_aggressive false
+    clean_empty_cache_dirs false
 
     echo ""
     echo -e "${C_GREEN}${C_BOLD}✓ Limpieza segura finalizada con éxito.${C_RESET}"
@@ -116,6 +120,8 @@ mode_interactive() {
         "clean_dart_temp:Temporales de Dart/Flutter (~244 KB)"
         "clean_gradle_temporary:Temporales de Gradle (~20 MB)"
         "clean_flatpak_unused:Runtimes no utilizados de Flatpak (~1.0 GB)"
+        "clean_gradle_aggressive:Limpieza Agresiva de Gradle (~7.0 GB)"
+        "clean_empty_cache_dirs:Purga de carpetas vacías en cachés"
     )
 
     for item in "${actions[@]}"; do
