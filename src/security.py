@@ -17,7 +17,13 @@ SYSTEM_CRITICAL_DIRECTORIES = {
     "/usr", "/bin", "/sbin", "/root", str(Path.home())
 }
 
+_CACHED_PROTECTED_PATHS = None
+
 def load_protected_paths():
+    global _CACHED_PROTECTED_PATHS
+    if _CACHED_PROTECTED_PATHS is not None:
+        return _CACHED_PROTECTED_PATHS
+
     paths = set()
     if PROTECTED_CONF.exists():
         with open(PROTECTED_CONF, "r", encoding="utf-8") as f:
@@ -38,7 +44,9 @@ def load_protected_paths():
             str((home / "Music").resolve()),
             str((home / "Drive").resolve())
         ])
-    return sorted(list(paths))
+    _CACHED_PROTECTED_PATHS = sorted(list(paths))
+    return _CACHED_PROTECTED_PATHS
+
 
 def is_path_protected(target_path: str) -> bool:
     if not target_path or not str(target_path).strip():
